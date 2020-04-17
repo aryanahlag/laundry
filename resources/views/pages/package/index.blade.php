@@ -38,11 +38,11 @@
             <td class="text-center">{{ $t->price }}</td>
             <td class="text-center">{{ $t->type->name }}</td>
             <td class="text-center">
-                <a style="margin:2px;" href="{{ route('admin.paket.edit', ['id'=>$t->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                 <form method="POST" action="{{ route('admin.paket.destroy', ['id'=>$t->id]) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                    <a style="margin:2px;" href="{{ route('admin.paket.edit', ['id'=>$t->id]) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
                 </form>
             </td>
             </tr>

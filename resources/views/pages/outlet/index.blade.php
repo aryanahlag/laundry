@@ -12,7 +12,7 @@
 
 @section('content')
     <a href=" {{ route('admin.outlet.create') }} " class="btn btn-success"><i class="fas fa-folder-plus"></i> Tambah Outlet</a>
-    <a href=" {{ route('outlet.pdf') }} " class="btn btn-danger"><i class="fas fa-file-pdf"></i> Print PDF</a>
+    {{-- <a href=" {{ route('outlet.pdf') }} " class="btn btn-danger"><i class="fas fa-file-pdf"></i> Print PDF</a> --}}
     <br>
     <br>
     <div class="table-responsive">
@@ -36,11 +36,11 @@
             <td class="text-center">{{ $o->name }}</td>
             <td class="text-center">{{ $o->address }}</td>
             <td class="text-center">
-                <a style="margin:2px;" href="{{ route('admin.outlet.edit', ['id'=>$o->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                 <form method="POST" action="{{ route('admin.outlet.destroy', ['id'=>$o->id]) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                    <a style="margin:2px;" href="{{ route('admin.outlet.edit', ['id'=>$o->id]) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
                 </form>
             </td>
             @endforeach

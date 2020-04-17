@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function(){
 
         //type
         Route::resource('/jenis', 'TypeController');
+        // user
+        Route::resource('/r-l-u', 'UserController');
 
         //account
         Route::get('/akun', 'AccountController@account')->name('account');
@@ -60,7 +62,8 @@ Route::middleware('auth')->group(function(){
 	//member
 	Route::group(['prefix' => '/owner', 'as'=>'owner.', 'middleware'=>'owner'], function(){
         Route::get('/report/data', 'ReportController@datatables')->name('report.data');
-	});
+    });
+    Route::get('/r', 'ReportController@index')->name('rOwner');
 });
 
 Auth::routes();

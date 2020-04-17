@@ -40,11 +40,11 @@
                 <td class="text-center">{{ $c->phone }}</td>
                 <td class="text-center">{{ $c->gender }}</td>
                 <td class="text-center">
-                    <a style="margin:2px;" href="{{ route('admin.member.edit', ['id'=>$c->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                     <form method="POST" action="{{ route('admin.member.destroy', ['id'=>$c->id]) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                    <a style="margin:2px;" href="{{ route('admin.member.edit', ['id'=>$c->id]) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
                     </form>
                 </td>
             </tr>

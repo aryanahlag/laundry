@@ -1,19 +1,19 @@
 @extends('layouts.master', ["activePage" => "Akun Pengguna", "titlePage" => "Akun Pengguna-Owner" ])
 
 @section('title')
-    <h1>Owner</h1>
+    <h1>User</h1>
 @endsection
 
 @section('cardHeader')
     <h3>
-        Daftar Owner
+        Daftar User
     </h3>
 @endsection
 
 @section('content')
-    <a href=" {{ route('admin.owner.create') }} " class="btn btn-success"><i class="fas fa-folder-plus"></i> Tambah Owner</a>
-    <br>
-    <br>
+    {{-- <a href="" class="btn btn-success"><i class="fas fa-folder-plus"></i> Tambah Owner</a> --}}
+    {{-- <br> --}}
+    {{-- <br> --}}
     <div class="table-responsive">
         <table class="table table-borderless table-striped" id="tableJenis">
             <thead style="background-color: lightgreen;">
@@ -21,20 +21,44 @@
                     <th class="text-center">NO</th>
                     <th class="text-center">NAMA</th>
                     <th class="text-center">USERNAME AKUN</th>
+                    <th class="text-center">JABATAN</th>
                     <th class="text-center">AKSI</th>
                 </tr>
             </thead>
             <tbody>
-            @if ($owners->count() == 0)
+            @if ($users->count() == 0)
                 <tr>
                     <td colspan="4" class="text-center">No data</td>
                 </tr>
             @endif
-            @foreach ($owners as $i => $c)
+            @foreach ($users as $i => $c)
             <tr>
                 <td class="text-center">{{ $i+1 }}</td>
-                <td class="text-center">{{ $c->name }}</td>
-                <td class="text-center">{{ $c->user->username }}</td>
+                <td class="text-center">
+                    @if($c->role == 'admin')
+                      {{ $c['admin']->name }}
+                  @elseif($c->role == 'kasir')
+                      {{ $c['kasir']->name }}
+                  @else
+                      {{ $c['owner']->name }}
+                  @endif
+                </td>
+                <td class="text-center">{{ $c->username }}</td>
+                <td class="text-center">
+                    @if($c->role == 'admin')
+                    <label for="" class="badge badge-success">
+                      {{ $c->role }}
+                    </label>
+                  @elseif($c->role == 'kasir')
+                    <label for="" class="badge badge-danger">
+                      {{ $c->role }}
+                    </label>
+                  @else
+                    <label for="" class="badge badge-primary">
+                      {{ $c->role }}
+                    </label>
+                  @endif
+                </td>
                 <td class="text-center">
                     <form method="POST" action="{{ route('admin.owner.destroy', ['id'=>$c->id]) }}">
                         @csrf

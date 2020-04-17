@@ -32,7 +32,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a style="color: black;" href="{{ route('admin.transaksi.create') }}" class="nav-link">
+                                    <a style="color: black;" href="{{ route('admin.transaksi.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Form Kasir</p>
                                     </a>
@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li class="nav-item {{ $activePage == 'Outlet' ? ' active' : '' }}">
-                        <a style="color: black;" href="{{ route('admin.outlet.index') }}" class="nav-link">
+                        <a style="color: black;" href="{{ route('admin.outlet.index') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-store"></i>
                                 <p>
                                     Outlet
@@ -86,7 +86,7 @@
                             </a>
                         </li>
                         <li class="nav-item {{ $activePage == 'Package' ? ' active' : '' }}">
-                        <a style="color: black;" href="" class="nav-link">
+                        <a style="color: black;" href="{{ route('rOwner') }}" class="nav-link">
                                 <i class="nav-icon fas fa-print"></i>
                                 <p>
                                     Laporan
